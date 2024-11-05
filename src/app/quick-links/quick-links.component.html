@@ -1,0 +1,29 @@
+<!-- quick-links.component.html -->
+<div class="quick-links-container">
+    <h2 class="quick-links-title">Coming Soon - {{ selectedLink }}</h2>
+  
+    <div *ngIf="selectedLink === 'faqs'" class="content-box">
+      <p class="content-text">Here are some frequently asked questions to assist you.</p>
+    </div>
+  
+    <div *ngIf="selectedLink === 'reviews'" class="content-box">
+      <p class="content-text">Discover our latest product reviews and insights.</p>
+    </div>
+  
+    <div *ngIf="selectedLink === 'shipping-policy'" class="content-box">
+      <p class="content-text">Find all the details about our shipping policy.</p>
+    </div>
+  
+    <div *ngIf="selectedLink === 'refund-policy'" class="content-box">
+      <p class="content-text">Learn about our refund policy for a worry-free experience.</p>
+    </div>
+  
+    <div *ngIf="selectedLink === 'terms'" class="content-box">
+      <p class="content-text">Review our terms and conditions for a clear understanding.</p>
+    </div>
+  
+    <div *ngIf="selectedLink === 'privacy-policy'" class="content-box">
+      <p class="content-text">Read our privacy policy to see how we protect your information.</p>
+    </div>
+  </div>
+  

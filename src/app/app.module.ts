@@ -7,6 +7,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HomeComponent } from './home/home.component';
+import { CategoryComponent } from './category/category.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { QuickLinksComponent } from './quick-links/quick-links.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +18,11 @@ import { FooterComponent } from './components/footer/footer.component';
     NavbarComponent,
     BannerComponent,
     ProductListComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    CategoryComponent,
+    NotFoundComponent,
+    QuickLinksComponent
   ],
   imports: [
     BrowserModule,

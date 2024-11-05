@@ -1,0 +1,41 @@
+/* quick-links.component.css */
+.quick-links-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px; /* Spread padding to fill space */
+    min-height: calc(100vh - 200px); /* Adjust based on navbar/footer height */
+    background-color: #f8f9fa; /* Light background for richness */
+  }
+  
+  .quick-links-title {
+    font-size: 2rem; /* Larger font for title */
+    color: #333; /* Dark color for contrast */
+    margin-bottom: 20px; /* Space below title */
+    text-align: center; /* Center align title */
+    font-weight: bold; /* Bold title */
+  }
+  
+  .content-box {
+    background-color: #ffffff; /* White background for content box */
+    border-radius: 8px; /* Rounded corners for a softer look */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 20px; /* Padding inside the box */
+    margin: 10px 0; /* Margin between boxes */
+    width: 80%; /* Responsive width */
+    max-width: 600px; /* Max width for large screens */
+  }
+  
+  .content-text {
+    font-size: 1.2rem; /* Slightly larger font for text */
+    color: #555; /* Gray color for softer text */
+    line-height: 1.5; /* Increase line height for readability */
+    text-align: justify; /* Justify text for an elegant look */
+  }
+  
+  /* Ensure footer stays at the bottom */
+  footer {
+    margin-top: auto; /* Push footer to the bottom */
+  }
+  
