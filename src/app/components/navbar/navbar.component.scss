@@ -1,0 +1,29 @@
+/* Make navbar stick to the top */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;  /* Ensure the navbar stays above other content */
+    width: 100%;
+    padding-top: 10px; /* Optional: space between navbar and content */
+  }
+  
+  /* Add padding to the page content so it doesn't overlap the navbar */
+  body {
+    padding-top: 70px;  /* Adjust this value according to the height of your navbar */
+  }
+  
+  /* Optional: Style for the right-side links */
+#signIn {
+    margin-left: 20px; /* Optional: Adds space between the "Sign In" and "Join as Guest" links */
+  }
+  
+  .navbar-nav .nav-item a {
+    color: #fff; /* White text color for navbar items */
+  }
+  
+  .navbar-nav .nav-item a:hover {
+    color: #f0ad4e; /* Optional: Add hover effect to the links */
+  }
+  
