@@ -13,6 +13,7 @@ const routes: Routes = [
 
   { path: 'products', component: ProductListComponent },
   { path: 'category/:id', component: CategoryComponent }, // Dynamic route example
+  { path: 'categories', component: CategoryComponent },
   { path: '**', component: NotFoundComponent } // For unmatched routes
 ];
 

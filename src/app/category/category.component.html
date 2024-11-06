@@ -1,1 +1,47 @@
-<p>category works!</p>
+<div class="container mt-8">
+    <!-- Categories Panel -->
+    <div class="row">
+      <div class="col-md-3">
+        <div class="categories-panel">
+          <h3>Categories</h3>
+          <ul class="list-group">
+            <li class="list-group-item" (click)="filterCategory('instant-gifts')">Instant Gifts</li>
+            <li class="list-group-item" (click)="filterCategory('customize-gifts')">Customize Gifts</li>
+            <li class="list-group-item" (click)="filterCategory('corporate-gifts')">Corporate Gifts</li>
+            <li class="list-group-item" (click)="filterCategory('engraving-gifts')">Engraving Gifts</li>
+          </ul>
+        </div>
+      </div>
+  
+      <!-- Main Content (Product Grid) -->
+      <div class="col-md-9">
+        <!-- Filter Section -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <select class="form-select" (change)="sortProducts($event)">
+            <option value="price-asc">Sort by Price (Low to High)</option>
+            <option value="price-desc">Sort by Price (High to Low)</option>
+            <option value="rating">Sort by Rating</option>
+          </select>
+        </div>
+  
+        <!-- Product Grid -->
+        <div class="row">
+          <div class="col-md-3" *ngFor="let product of filteredProducts">
+            <div class="card">
+              <img [src]="product.image" class="card-img-top" alt="{{ product.title }}" />
+              <div class="card-body text-center">
+                <h5 class="card-title">{{ product.title }}</h5>
+                <p class="card-text">{{ product.price | currency }}</p>
+                <p class="card-text">Rating: {{ product.rating }} ★</p>
+                <div class="d-flex justify-content-between">
+                  <button class="btn btn-primary" (click)="addToCart(product)">Add to Cart</button>
+                  <button class="btn btn-secondary" (click)="customizeGift(product)">Customize</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
