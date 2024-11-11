@@ -11,6 +11,10 @@ import { HomeComponent } from './home/home.component';
 import { CategoryComponent } from './category/category.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { QuickLinksComponent } from './quick-links/quick-links.component';
+import { CreateUserComponent } from './user/create-user/create-user.component';
+import { LoginComponent } from './user/login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,11 +26,15 @@ import { QuickLinksComponent } from './quick-links/quick-links.component';
     HomeComponent,
     CategoryComponent,
     NotFoundComponent,
-    QuickLinksComponent
+    QuickLinksComponent,
+    CreateUserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

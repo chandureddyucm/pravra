@@ -1,0 +1,46 @@
+<div class="container mt-8">
+    <h2>Create User</h2>
+    <form [formGroup]="createUserForm" (ngSubmit)="onSubmit()">
+      <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" formControlName="firstName" class="form-control" />
+        <div *ngIf="f['firstName']?.invalid && (f['firstName']?.touched || submitted)" class="text-danger">First name is required</div>
+      </div>
+  
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" formControlName="lastName" class="form-control" />
+        <div *ngIf="f['lastName']?.invalid && (f['lastName']?.touched || submitted)" class="text-danger">Last name is required</div>
+      </div>
+  
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" class="form-control" />
+        <div *ngIf="f['email']?.invalid && (f['email']?.touched || submitted)" class="text-danger">Invalid email address</div>
+      </div>
+  
+      <div class="form-group">
+        <label for="mobile">Mobile</label>
+        <input type="text" id="mobile" formControlName="mobile" class="form-control" />
+        <div *ngIf="f['mobile']?.invalid && (f['mobile']?.touched || submitted)" class="text-danger">Mobile number must be 10 digits</div>
+      </div>
+  
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select id="gender" formControlName="gender" class="form-control">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" class="form-control" />
+        <div *ngIf="f['password']?.invalid && (f['password']?.touched || submitted)" class="text-danger">Password is required</div>
+      </div>
+  
+      <button type="submit" [disabled]="createUserForm.invalid" class="btn btn-primary">Create User</button>
+    </form>
+</div>  
