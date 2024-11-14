@@ -1,7 +1,8 @@
 export interface baseResp {
+  status: boolean;
   data: any;
   message: string;
-  success: boolean;
+  error: string;
 }
 
 export interface baseRespLogin extends baseResp{

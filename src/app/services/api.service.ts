@@ -19,5 +19,9 @@ export class ApiService {
   login(email:string, password:string){
     return this.http.get<baseRespLogin>(`${this.baseUrl}/user/login?email=${email}&password=${password}`);
   }
+
+  getuserbyuserid(){
+    return this.http.get<baseResp>(`${this.baseUrl}/user/getuserbyuserid`);
+  }
   //#endregion
 }
