@@ -46,7 +46,6 @@ export class CreateUserComponent {
     
     this.apiService.createUser(userData).subscribe(
       (resp: baseResp) => {
-        alert('User created successfully!');
         this.router.navigate(['/login']);
       },
       (error) => {

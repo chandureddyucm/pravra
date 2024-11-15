@@ -44,7 +44,6 @@ export class LoginComponent {
     this.apiService.login(loginData.email, loginData.password).subscribe(
       (response: baseRespLogin) => {
         localStorage.setItem('token', response.bearerToken);
-        alert('User loggedin successfully!');
         this.router.navigate(['/home']);
       },
       (error) => {

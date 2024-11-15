@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { SweetAlertService } from '../services/sweet-alert.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
   private token = 'your_bearer_token_here'; // Replace this with your actual token logic
+
+  constructor(private sweetAlertService: SweetAlertService){}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // Clone the request to add the authorization header
@@ -25,9 +28,9 @@ export class AuthInterceptor implements HttpInterceptor {
             localStorage.setItem('token', event.body.bearerToken);
           }
           if (event.body && event.body.status && event.body.message) 
-            alert(event.body.message);
+            this.sweetAlertService.showSuccessToast(event.body.message);
           else if(event.body && !event.body.status && event.body.message)
-            alert(event.body.message);
+            this.sweetAlertService.showErrorToast(event.body.message);
         }
       })
     );
