@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { NavbarService } from 'src/app/services/navbar.service';
 import { baseRespLogin } from 'src/models/baseResponse';
 
 @Component({
@@ -18,7 +19,8 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private apiService: ApiService,
-    private router: Router
+    private router: Router,
+    private navbarService: NavbarService
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -27,7 +29,6 @@ export class LoginComponent {
   }
   
 
-  // Convenience getter for easy access to form fields
   get f() {
     return this.loginForm.controls;
   }
@@ -35,7 +36,6 @@ export class LoginComponent {
   onSubmit() {
     this.submitted = true;
 
-    // Stop if the form is invalid
     if (this.loginForm.invalid) {
       return;
     }
@@ -44,6 +44,9 @@ export class LoginComponent {
     this.apiService.login(loginData.email, loginData.password).subscribe(
       (response: baseRespLogin) => {
         localStorage.setItem('token', response.bearerToken);
+        localStorage.setItem('isLoggedIn', "true");
+        localStorage.setItem('userName', `${response.data.firstName[0]} ${response.data.lastName[0]}`);
+        this.navbarService.userLogin(true);
         this.router.navigate(['/home']);
       },
       (error) => {

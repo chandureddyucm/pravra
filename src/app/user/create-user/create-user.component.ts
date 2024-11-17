@@ -9,6 +9,7 @@ import { baseResp } from 'src/models/baseResponse';
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.scss']
 })
+
 export class CreateUserComponent {
   createUserForm: FormGroup;
   submitted = false;
@@ -52,5 +53,11 @@ export class CreateUserComponent {
         this.errorMessage = error.error.message || 'Something went wrong!';
       }
     );
+  }
+
+  validateMobile(event: any): void {
+    const inputValue = event.target.value;
+    // To Allow only digits
+    event.target.value = inputValue.replace(/[^0-9]/g, '');
   }
 }

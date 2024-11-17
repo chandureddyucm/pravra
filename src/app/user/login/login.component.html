@@ -1,5 +1,6 @@
-<div class="container mt-8">
-    <h2>Login</h2>
+<div class="container">
+  <div class="content-box">
+    <h2 class="text-center">Login</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
   
@@ -15,7 +16,7 @@
         <div *ngIf="f['password']?.invalid && (f['password']?.touched || submitted)" class="text-danger">Password is required</div>
       </div>
   
-      <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary">Login</button>
+      <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary w-100">Login</button>
     </form>
   </div>
-  
+</div>

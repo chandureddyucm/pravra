@@ -15,7 +15,10 @@ export class SweetAlertService {
       icon: 'success',
       title: title,
       showConfirmButton: false,
-      timer: 2500
+      timer: 2500,
+      customClass: {
+        popup: 'custom-toast-position'
+      }
     });
   }
 
