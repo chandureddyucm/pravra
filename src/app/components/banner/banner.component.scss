@@ -1,17 +1,66 @@
-.banner {
-  position: relative;
-  height: 60vh;
+// .banner {
+//   position: relative;
+//   height: 60vh;
+// }
+// .banner img {
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+// }
+// .banner-text {
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   color: white;
+//   text-align: center;
+// }
+/* Carousel Image Styling */
+.carousel-inner img {
+  height: 400px;
+  object-fit: cover; /* Ensures the image covers the area without stretching */
 }
-.banner img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+
+/* Custom Text Styling */
+.carousel-caption h5 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ff6f61; /* Pastel peach color for headings */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Adds a subtle shadow for better contrast */
 }
-.banner-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
+
+.carousel-caption p {
+  font-size: 1.2rem;
+  color: #f1f1f1;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Button Styling */
+.carousel-caption button {
+  background-color: #ff6f61; /* Pastel peach button */
+  border: none;
+  padding: 10px 20px;
+  font-size: 1.1rem;
+  border-radius: 25px;
+}
+
+.carousel-caption button:hover {
+  background-color: #ff4a3b; /* Darker peach color on hover */
+}
+
+/* Background color for each banner */
+.carousel-item:nth-child(1) {
+  background-color: #f9d9d5; /* Light peach */
+}
+
+.carousel-item:nth-child(2) {
+  background-color: #fcd9d0; /* Light pink */
+}
+
+.carousel-item:nth-child(3) {
+  background-color: #f9d9f1; /* Light lavender */
+}
+
+.carousel-item:nth-child(4) {
+  background-color: #fbd4d4; /* Light coral */
 }

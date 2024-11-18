@@ -5,7 +5,7 @@
   right: 0;
   z-index: 1030;
   width: 100%;
-  background-color: #ffebcc !important;
+  background-color: #f9d9d5 !important;
   padding: 1px 2px;
   display: flex;
   justify-content: space-between;
@@ -36,8 +36,8 @@ body {
 }
 
 .navbar-nav .nav-item a:hover {
-  color: #fff;
-  background-color: #ff6347;
+  color: #ff6347;
+  //background-color: #ff6347;
 }
 
 .dropdown {
