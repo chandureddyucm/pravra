@@ -7,6 +7,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { QuickLinksComponent } from './quick-links/quick-links.component';
 import { CreateUserComponent } from './user/create-user/create-user.component';
 import { LoginComponent } from './user/login/login.component';
+import { OccasionsComponent } from './user/occasions/occasions.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, // Default route,
@@ -18,6 +19,8 @@ const routes: Routes = [
   { path: 'categories', component: CategoryComponent },
   { path: 'register', component: CreateUserComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'occasions', component: OccasionsComponent },
+
   { path: '**', component: NotFoundComponent } // For unmatched routes
 ];
 

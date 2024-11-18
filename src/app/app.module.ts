@@ -13,9 +13,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { QuickLinksComponent } from './quick-links/quick-links.component';
 import { CreateUserComponent } from './user/create-user/create-user.component';
 import { LoginComponent } from './user/login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { OccasionsComponent } from './user/occasions/occasions.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +30,15 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     NotFoundComponent,
     QuickLinksComponent,
     CreateUserComponent,
-    LoginComponent
+    LoginComponent,
+    OccasionsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }],
   bootstrap: [AppComponent]
