@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs';
-import { baseResp, baseRespLogin, baseResponse } from 'src/models/baseResponse';
+import { baseResp, baseRespLogin, baseResponse } from 'src/app/models/baseResponse';
 import { environment } from 'src/environments/environment';
-import { gift } from 'src/models/gift';
+import { gift } from 'src/app/models/gift';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
