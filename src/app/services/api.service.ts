@@ -5,6 +5,7 @@ import { catchError, tap } from 'rxjs';
 import { baseResp, baseRespLogin, baseResponse } from 'src/app/models/baseResponse';
 import { environment } from 'src/environments/environment';
 import { gift } from 'src/app/models/gift';
+import { contact } from '../models/contact';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
@@ -67,5 +68,13 @@ export class ApiService {
     return this.http.get<baseResponse<gift>>(url);
   }
 
+  //#endregion
+
+  //#region contacts
+  getAllContacts() {
+    return this.http.get<baseResponse<contact>>(
+      `${this.baseUrl}/contacts`
+    );
+  }
   //#endregion
 }
