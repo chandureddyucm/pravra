@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
-import { baseResp } from 'src/models/baseResponse';
+import { baseResp } from 'src/app/models/baseResponse';
 
 @Component({
   selector: 'app-create-user',

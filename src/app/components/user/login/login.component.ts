@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { NavbarService } from 'src/app/services/navbar.service';
-import { baseRespLogin } from 'src/models/baseResponse';
+import { baseRespLogin } from 'src/app/models/baseResponse';
 
 @Component({
   selector: 'app-login',
