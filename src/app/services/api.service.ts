@@ -77,4 +77,10 @@ export class ApiService {
     );
   }
   //#endregion
+
+  //#region subscription
+  createSubscription(email: string) {
+    return this.http.put<baseResp>(`${this.baseUrl}/user/addSubscription?email=${email}`,{});
+  }
+  //#endregion
 }

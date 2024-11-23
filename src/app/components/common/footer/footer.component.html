@@ -25,8 +25,15 @@
         <li>Get exclusive access to premium gift boxes, special deals, and finest selections.</li>
       </ul>
       <div class="subscribe-section">
-        <input type="email" placeholder="Enter your email" class="email-input">
-        <button class="subscribe-btn">Subscribe</button>
+        <form [formGroup]="createSubscriptionForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <input type="email" id="email" formControlName="email" placeholder="Enter your email" class="email-input form-control">
+            <div *ngIf="f['email']?.invalid && (f['email']?.touched)" class="text-danger">
+              Please enter a valid email address.
+            </div>
+          </div>
+        <button class="subscribe-btn" [disabled]="!createSubscriptionForm.valid" type="submit">Subscribe</button>
+        </form>
       </div>
     </div>
 
