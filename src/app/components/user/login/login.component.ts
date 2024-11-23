@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { NavbarService } from 'src/app/services/navbar.service';
 import { baseRespLogin } from 'src/app/models/baseResponse';
+import { appUser } from 'src/app/models/user';
 
 @Component({
   selector: 'app-login',
@@ -45,6 +46,7 @@ export class LoginComponent {
       (response: baseRespLogin) => {
         localStorage.setItem('token', response.bearerToken);
         localStorage.setItem('isLoggedIn', "true");
+        localStorage.setItem('isAdmin', response.data.isAdmin.toString());
         localStorage.setItem('userName', `${response.data.firstName[0]} ${response.data.lastName[0]}`);
         this.navbarService.userLogin(true);
         this.router.navigate(['/home']);

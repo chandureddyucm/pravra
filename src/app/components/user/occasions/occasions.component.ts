@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+import { addGift } from 'src/app/models/gift';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
@@ -16,6 +17,18 @@ export class OccasionsComponent {
   categories!: any[];
   types!: any[];
   showPriceFilter: boolean = false;
+  isAdmin: boolean = false;
+  edit: boolean = false;
+  product:addGift = {
+    giftId: '',
+    name: '',
+    description: '',
+    category: 'Occasions',
+    subcategory: '',
+    price: 0,
+    availability: true,
+    imageSrc: ''
+  };
 
   filteredProducts: any[] = []; 
 
@@ -25,6 +38,8 @@ export class OccasionsComponent {
     private router: Router
   ) {
     this.getAllGifts();
+    this.isAdmin = localStorage.getItem('isAdmin') == 'true' ? true : false;
+
   }
 
   getAllGifts() {
@@ -84,4 +99,38 @@ export class OccasionsComponent {
   }
 
   addToCart(evt: any) {}
+
+  saveProductDetails(giftId:string = '') {
+    if(!this.edit){
+      delete this.product.giftId;
+      this.apiService.addGift(this.product).subscribe((resp)=>{
+        this.getAllGifts();
+      });
+    }
+    else{
+      this.apiService.updateGift(this.product, giftId).subscribe((resp)=>{
+        this.getAllGifts();
+      });
+    }
+    
+    console.log('Product details saved:', this.product);
+  }
+
+  editProduct(product: any){
+    this.product.name = product.name;
+    this.product.description = product.description;
+    this.product.subcategory = product.subcategory;
+    this.product.price = product.price;
+    this.product.giftId = product.giftId;
+    this.edit = true;
+  }
+
+  addProduct(){
+    this.product.name = '';
+    this.product.description = '';
+    this.product.price = 0;
+    this.product.subcategory = '';
+    this.edit = false;
+  }
+
 }

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { addGift } from 'src/app/models/gift';
+import { SweetAlertService } from 'src/app/services/sweet-alert.service';
 
 @Component({
   selector: 'app-build-a-box',
@@ -16,6 +18,18 @@ export class BuildABoxComponent {
   categories!: any[];
   types!: any[];
   showPriceFilter: boolean = false;
+  isAdmin: boolean = false;
+  edit: boolean = false;
+  product:addGift = {
+    giftId: '',
+    name: '',
+    description: '',
+    category: 'Build A Box',
+    subcategory: '',
+    price: 0,
+    availability: true,
+    imageSrc: ''
+  };
 
   filteredProducts: any[] = [];
   boxItems: any[] = [];
@@ -23,8 +37,10 @@ export class BuildABoxComponent {
   constructor(
     private formBuilder: FormBuilder,
     private apiService: ApiService,
-    private router: Router
+    private router: Router,
+    private sweetAlertService: SweetAlertService,
   ) {
+    this.isAdmin = localStorage.getItem('isAdmin') == 'true' ? true : false;
     this.getAllGifts();
   }
 
@@ -89,7 +105,10 @@ export class BuildABoxComponent {
 
   addToBox(evt: any) {
     evt.quantity = 1;
-    this.boxItems = [...this.boxItems, evt];
+    if (!this.boxItems.some(item => item.giftId === evt.giftId)) {
+      this.boxItems = [...this.boxItems, evt];
+    }
+    this.sweetAlertService.showSuccessToast("Item Added to box Successfully");
     console.log(this.filteredProducts, this.boxItems, evt);
   }
 
@@ -111,5 +130,39 @@ export class BuildABoxComponent {
       (total, item) => total + item.price * item.quantity,
       0
     );
+  }
+
+
+  saveProductDetails(giftId:string = '') {
+    if(!this.edit){
+      delete this.product.giftId;
+      this.apiService.addGift(this.product).subscribe((resp)=>{
+        this.getAllGifts();
+      });
+    }
+    else{
+      this.apiService.updateGift(this.product, giftId).subscribe((resp)=>{
+        this.getAllGifts();
+      });
+    }
+    
+    console.log('Product details saved:', this.product);
+  }
+
+  editProduct(product: any){
+    this.product.name = product.name;
+    this.product.description = product.description;
+    this.product.subcategory = product.subcategory;
+    this.product.price = product.price;
+    this.product.giftId = product.giftId;
+    this.edit = true;
+  }
+
+  addProduct(){
+    this.product.name = '';
+    this.product.description = '';
+    this.product.price = 0;
+    this.product.subcategory = '';
+    this.edit = false;
   }
 }

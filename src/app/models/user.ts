@@ -5,4 +5,5 @@ export interface appUser {
     gender: string;
     mobile: number;
     email: string;
+    isAdmin: boolean;
 }

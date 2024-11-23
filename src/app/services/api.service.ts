@@ -4,8 +4,9 @@ import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs';
 import { baseResp, baseRespLogin, baseResponse } from 'src/app/models/baseResponse';
 import { environment } from 'src/environments/environment';
-import { gift } from 'src/app/models/gift';
+import { addGift, gift } from 'src/app/models/gift';
 import { contact } from '../models/contact';
+import { appUser } from '../models/user';
 
 @Injectable({ providedIn: 'root' })
 export class ApiService {
@@ -33,6 +34,18 @@ export class ApiService {
   getAllGifts() {
     return this.http.get<baseResponse<gift>>(
       `${this.baseUrl}/gifts/getAllGifts`
+    );
+  }
+
+  addGift(body: addGift) {
+    return this.http.post<baseResponse<gift>>(
+      `${this.baseUrl}/gifts/addGift`, body
+    );
+  }
+
+  updateGift(body: addGift, giftId: string) {
+    return this.http.put<baseResponse<gift>>(
+      `${this.baseUrl}/gifts/updateGift/${giftId}`, body
     );
   }
 

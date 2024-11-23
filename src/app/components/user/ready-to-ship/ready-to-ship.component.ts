@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Route, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { addGift } from 'src/app/models/gift';
 
 @Component({
   selector: 'app-ready-to-ship',
@@ -16,6 +17,18 @@ export class ReadyToShipComponent {
   categories!: any[];
   types!: any[];
   showPriceFilter: boolean = false;
+  isAdmin: boolean = false;
+  edit: boolean = false;
+  product:addGift = {
+    giftId: '',
+    name: '',
+    description: '',
+    category: 'Ready To Ship',
+    subcategory: '',
+    price: 0,
+    availability: true,
+    imageSrc: ''
+  };
 
   filteredProducts: any[] = []; 
 
@@ -24,6 +37,7 @@ export class ReadyToShipComponent {
     private apiService: ApiService,
     private router: Router
   ) {
+    this.isAdmin = localStorage.getItem('isAdmin') == 'true' ? true : false;
     this.getAllGifts();
   }
 
@@ -85,4 +99,38 @@ export class ReadyToShipComponent {
   }
 
   addToCart(evt: any) {}
+
+
+  saveProductDetails(giftId:string = '') {
+    if(!this.edit){
+      delete this.product.giftId;
+      this.apiService.addGift(this.product).subscribe((resp)=>{
+        this.getAllGifts();
+      });
+    }
+    else{
+      this.apiService.updateGift(this.product, giftId).subscribe((resp)=>{
+        this.getAllGifts();
+      });
+    }
+    
+    console.log('Product details saved:', this.product);
+  }
+
+  editProduct(product: any){
+    this.product.name = product.name;
+    this.product.description = product.description;
+    this.product.subcategory = product.subcategory;
+    this.product.price = product.price;
+    this.product.giftId = product.giftId;
+    this.edit = true;
+  }
+
+  addProduct(){
+    this.product.name = '';
+    this.product.description = '';
+    this.product.price = 0;
+    this.product.subcategory = '';
+    this.edit = false;
+  }
 }

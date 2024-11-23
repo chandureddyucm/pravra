@@ -53,6 +53,8 @@
       <div class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#boxSummaryModal">
         View Box
       </div>
+      <button *ngIf="isAdmin" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#productDetailsModal" (onClick)="addProduct()">Add Product</button>
+
       <!-- Price Filter -->
       <div
         class="price-filter position-relative ms-auto"
@@ -96,6 +98,9 @@
     <div class="row g-3 mb-3">
       <div class="col-md-3" *ngFor="let product of filteredProducts">
         <div class="card h-100">
+          <button *ngIf="isAdmin" type="button" class="btn btn-primary position-absolute top-0 end-0 m-2" style="color: #FFB6A3; background-color: transparent; border: none;" (click)="editProduct(product)" data-bs-toggle="modal" data-bs-target="#productDetailsModal">
+            Edit
+          </button>
           <img
             [src]="product.image || 'assets/corporateGifts.jpg'"
             class="card-img-top"
@@ -195,6 +200,127 @@
           Close
         </button>
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Complete Box</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div
+  class="modal fade"
+  id="productDetailsModal"
+  tabindex="-1"
+  aria-labelledby="productDetailsModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="productDetailsModalLabel">{{ edit ? 'Update Product' : 'Add Product' }}</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <!-- Form Fields -->
+        <div class="mb-3">
+          <label for="productName" class="form-label">Product Name</label>
+          <input
+            type="text"
+            id="productName"
+            class="form-control"
+            [(ngModel)]="product.name"
+            placeholder="Enter product name"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="productDescription" class="form-label">Description</label>
+          <textarea
+            id="productDescription"
+            class="form-control"
+            [(ngModel)]="product.description"
+            placeholder="Enter product description"
+          ></textarea>
+        </div>
+
+        <!-- <div class="mb-3">
+          <label for="productCategory" class="form-label">Category</label>
+          <input
+            type="text"
+            id="productCategory"
+            class="form-control"
+            [(ngModel)]="product.category"
+            placeholder="Enter category"
+          />
+        </div> -->
+
+        <div class="mb-3">
+          <label for="productSubcategory" class="form-label">Type</label>
+          <input
+            type="text"
+            id="productSubcategory"
+            class="form-control"
+            [(ngModel)]="product.subcategory"
+            placeholder="Enter Type"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="productPrice" class="form-label">Price</label>
+          <input
+            type="number"
+            id="productPrice"
+            class="form-control"
+            [(ngModel)]="product.price"
+            placeholder="Enter price"
+          />
+        </div>
+
+        <!-- <div class="mb-3">
+          <label for="productAvailability" class="form-label">Availability</label>
+          <select
+            id="productAvailability"
+            class="form-select"
+            [(ngModel)]="product.availability"
+          >
+            <option [value]="true">Available</option>
+            <option [value]="false">Out of Stock</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="productImage" class="form-label">Image URL</label>
+          <input
+            type="text"
+            id="productImage"
+            class="form-control"
+            [(ngModel)]="product.imageSrc"
+            placeholder="Enter image URL"
+          />
+        </div> -->
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Cancel
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-dismiss="modal"
+          (click)="saveProductDetails(product.giftId)"
+        >
+        {{ edit ? 'Update Product' : 'Add Product' }}
+        </button>
       </div>
     </div>
   </div>
