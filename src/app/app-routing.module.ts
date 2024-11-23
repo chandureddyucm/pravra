@@ -6,6 +6,8 @@ import { CreateUserComponent } from './components/user/create-user/create-user.c
 import { LoginComponent } from './components/user/login/login.component';
 import { OccasionsComponent } from './components/user/occasions/occasions.component';
 import { HomeComponent } from './components/common/home/home.component';
+import { ReadyToShipComponent } from './components/user/ready-to-ship/ready-to-ship.component';
+import { BuildABoxComponent } from './components/user/build-a-box/build-a-box.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, // Default route,
@@ -17,6 +19,8 @@ const routes: Routes = [
   { path: 'register', component: CreateUserComponent },
   { path: 'login', component: LoginComponent },
   { path: 'occasions', component: OccasionsComponent },
+  { path: 'ready-to-ship', component: ReadyToShipComponent },
+  { path: 'build-a-box', component: BuildABoxComponent },
 
   { path: '**', component: HomeComponent } // For unmatched routes
 ];

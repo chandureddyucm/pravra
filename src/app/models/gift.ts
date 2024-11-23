@@ -6,4 +6,5 @@ export interface gift {
     subcategory: string;
     price: string;
     availability: boolean;
+    quantity: number;
 }

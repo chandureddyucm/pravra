@@ -4,14 +4,14 @@ import { Route, Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
-  selector: 'app-occasions',
-  templateUrl: './occasions.component.html',
-  styleUrls: ['./occasions.component.scss'],
+  selector: 'app-ready-to-ship',
+  templateUrl: './ready-to-ship.component.html',
+  styleUrls: ['./ready-to-ship.component.scss']
 })
-export class OccasionsComponent {
+export class ReadyToShipComponent {
   minPrice: number = 0;
   maxPrice: number = 0;
-  selectedCategory: string = 'Occasions';
+  selectedCategory: string = 'Ready To Ship';
   selectedType!: string;
   categories!: any[];
   types!: any[];
@@ -48,6 +48,7 @@ export class OccasionsComponent {
         label: subcategory,
       }));
       this.types = [...this.types, { key: "All", label: "All" }];
+
       console.log(this.categories, this.types);
     });
 

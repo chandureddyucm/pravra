@@ -16,6 +16,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { OccasionsComponent } from './components/user/occasions/occasions.component';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { ReadyToShipComponent } from './components/user/ready-to-ship/ready-to-ship.component';
+import { BuildABoxComponent } from './components/user/build-a-box/build-a-box.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     QuickLinksComponent,
     CreateUserComponent,
     LoginComponent,
-    OccasionsComponent
+    OccasionsComponent,
+    ReadyToShipComponent,
+    BuildABoxComponent
   ],
   imports: [
     BrowserModule,
