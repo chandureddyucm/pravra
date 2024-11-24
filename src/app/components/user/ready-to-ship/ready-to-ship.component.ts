@@ -62,8 +62,6 @@ export class ReadyToShipComponent {
         label: subcategory,
       }));
       this.types = [...this.types, { key: "All", label: "All" }];
-
-      console.log(this.categories, this.types);
     });
 
     //this.selectedCategory = this.filteredProducts[0];
@@ -126,9 +124,7 @@ export class ReadyToShipComponent {
       this.apiService.updateGift(formData, giftId).subscribe((resp)=>{
         this.getAllGifts();
       });
-    }
-    
-    console.log('Product details saved:', this.product);
+    }    
   }
 
   editProduct(product: any){
@@ -141,6 +137,7 @@ export class ReadyToShipComponent {
 
     const fileInput = document.getElementById('productImage') as HTMLInputElement;
     fileInput.value = '';
+    this.imageFile = new File([], '');
   }
 
   addProduct(){
@@ -152,6 +149,7 @@ export class ReadyToShipComponent {
 
     const fileInput = document.getElementById('productImage') as HTMLInputElement;
     fileInput.value = '';
+    this.imageFile = new File([], '');
   }
 
   imageFile!: File; 

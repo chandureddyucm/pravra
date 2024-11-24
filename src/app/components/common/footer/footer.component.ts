@@ -37,7 +37,6 @@ export class FooterComponent {
     this.apiService.getAllContacts().subscribe(
       (resp: baseResponse<contact>) => {
         var obj = resp.data.filter((c) => c.tag === 'ContactUs');
-        console.log(obj);
         this.contactUsEmail =
           obj?.find((c) => c.contacts.type === 'email')?.contacts.value ??
           this.contactUsEmail;

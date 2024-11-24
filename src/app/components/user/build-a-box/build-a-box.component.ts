@@ -67,8 +67,6 @@ export class BuildABoxComponent {
           label: subcategory,
         }));
         this.types = [...this.types, { key: 'All', label: 'All' }];
-
-        console.log(this.categories, this.types);
       });
 
     //this.selectedCategory = this.filteredProducts[0];
@@ -109,7 +107,6 @@ export class BuildABoxComponent {
       this.boxItems = [...this.boxItems, evt];
     }
     this.sweetAlertService.showSuccessToast("Item Added to box Successfully");
-    console.log(this.filteredProducts, this.boxItems, evt);
   }
 
   // Function to increase quantity
@@ -166,8 +163,6 @@ export class BuildABoxComponent {
         this.getAllGifts();
       });
     }
-    
-    console.log('Product details saved:', this.product);
   }
 
   editProduct(product: any){
@@ -180,6 +175,7 @@ export class BuildABoxComponent {
 
     const fileInput = document.getElementById('productImage') as HTMLInputElement;
     fileInput.value = '';
+    this.imageFile = new File([], '');
   }
 
   addProduct(){
@@ -191,5 +187,6 @@ export class BuildABoxComponent {
 
     const fileInput = document.getElementById('productImage') as HTMLInputElement;
     fileInput.value = '';
+    this.imageFile = new File([], '');
   }
 }
