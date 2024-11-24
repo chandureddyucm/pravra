@@ -159,7 +159,7 @@
         <!-- Items List -->
         <div *ngFor="let item of boxItems" class="item-row d-flex align-items-center mb-3">
           <!-- Image -->
-          <img [src]="item.image || 'assets/corporateGifts.jpg'" alt="{{ item.name }}" class="item-img me-3"/>
+          <img [src]="item.imageSrc || 'assets/corporateGifts.jpg'" alt="{{ item.name }}" class="item-img me-3"/>
 
           <!-- Name and Price -->
           <div class="item-details flex-grow-1">
