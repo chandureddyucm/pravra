@@ -48,7 +48,7 @@
           </li>
         </ul>
       </div>
-      <button *ngIf="isAdmin" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#productDetailsModal" (onClick)="addProduct()">Add Product</button>
+      <button *ngIf="isAdmin" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#productDetailsModal" (click)="addProduct()">Add Product</button>
 
       <!-- Price Filter -->
       <div
@@ -97,7 +97,7 @@
             Edit
           </button>
           <img
-            [src]="product.image || 'assets/corporateGifts.jpg'"
+            [src]="product.imageSrc || 'assets/corporateGifts.jpg'"
             class="card-img-top"
             alt="{{ product.name }}"
             style="height: 200px; object-fit: cover"
@@ -228,6 +228,16 @@ aria-hidden="true"
           placeholder="Enter image URL"
         />
       </div> -->
+      <div class="mb-3">
+        <label for="productImage" class="form-label">Upload Image</label>
+        <input
+          type="file"
+          id="productImage"
+          class="form-control"
+          (change)="onFileChange($event)"
+          accept=".jpg"
+        />
+      </div>
     </div>
     <div class="modal-footer">
       <button

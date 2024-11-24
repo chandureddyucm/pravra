@@ -37,13 +37,13 @@ export class ApiService {
     );
   }
 
-  addGift(body: addGift) {
+  addGift(body: any) {
     return this.http.post<baseResponse<gift>>(
       `${this.baseUrl}/gifts/addGift`, body
     );
   }
 
-  updateGift(body: addGift, giftId: string) {
+  updateGift(body: any, giftId: string) {
     return this.http.put<baseResponse<gift>>(
       `${this.baseUrl}/gifts/updateGift/${giftId}`, body
     );

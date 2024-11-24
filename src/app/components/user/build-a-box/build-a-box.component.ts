@@ -132,16 +132,37 @@ export class BuildABoxComponent {
     );
   }
 
+  imageFile!: File; 
+  onFileChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.imageFile = input.files[0]; 
+    }
+  }
 
   saveProductDetails(giftId:string = '') {
     if(!this.edit){
       delete this.product.giftId;
-      this.apiService.addGift(this.product).subscribe((resp)=>{
+      const formData = new FormData();
+      for (const key in this.product) {
+        if (this.product.hasOwnProperty(key) && key !== 'imageSrc') {
+          formData.append(key, this.product[key as keyof addGift] as string);
+        }
+      }
+      formData.append('image', this.imageFile);
+      this.apiService.addGift(formData).subscribe((resp)=>{
         this.getAllGifts();
       });
     }
     else{
-      this.apiService.updateGift(this.product, giftId).subscribe((resp)=>{
+      const formData = new FormData();
+      for (const key in this.product) {
+        if (this.product.hasOwnProperty(key) && key !== 'imageSrc') {
+          formData.append(key, this.product[key as keyof addGift] as string);
+        }
+      }
+      formData.append('image', this.imageFile);
+      this.apiService.updateGift(formData, giftId).subscribe((resp)=>{
         this.getAllGifts();
       });
     }
@@ -156,6 +177,9 @@ export class BuildABoxComponent {
     this.product.price = product.price;
     this.product.giftId = product.giftId;
     this.edit = true;
+
+    const fileInput = document.getElementById('productImage') as HTMLInputElement;
+    fileInput.value = '';
   }
 
   addProduct(){
@@ -164,5 +188,8 @@ export class BuildABoxComponent {
     this.product.price = 0;
     this.product.subcategory = '';
     this.edit = false;
+
+    const fileInput = document.getElementById('productImage') as HTMLInputElement;
+    fileInput.value = '';
   }
 }
